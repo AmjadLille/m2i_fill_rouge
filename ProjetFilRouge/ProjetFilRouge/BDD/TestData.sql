@@ -20,3 +20,17 @@
 
 --INSERT INTO Commentaire values
 --(5,null,'Test commentaire utilisateur 5',2);
+
+--INSERT INTO Contenu Values
+--('image',1,null,1,null,'canard',1),
+--('Lien',4,null,null,'www.google.fr',null,3),
+--('PhNeutre',2,1,2,null,null,2),
+--('JavaBien',3,2,3,'www.yahoo.fr',null,1),
+--('C#PourLesNuls',1,3,1,null,'DesChats',3)
+
+INSERT INTO Commentaire Values
+(1,1,'J''ai trouvé de quoi revolutionner le C#, je suis un génie, acclamez moi',1),
+(2,2,'J''ai trouvé de quoi revolutionner le JAVA, je suis UN FOU',3),
+(2,3,'J''ai trouvé de quoi revolutionner le PHP, Appelez moi sensei à partir d''aujourd''hui',2),
+(3,4,'J''ai trouvé de quoi revolutionner le MONDE du dev',2),
+(2,5,'J''ai trouvé ... ',1)
