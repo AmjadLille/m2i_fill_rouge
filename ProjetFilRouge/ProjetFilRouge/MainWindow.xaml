@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjetFilRouge"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ProjetFilRouge" Height="600" Width="800">
     <Grid>
-
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Button x:Name="Info" Content="Modifier Contact" Click="Info_Click" />
+            <Button x:Name="Connexion" Content="Connexion" Click="Connexion_Click" />
+     
+        </StackPanel>
+        
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <GroupBox>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Votre Prenom"></Label>
+                    <TextBox x:Name="Prenom" Width="150" VerticalAlignment="Center" />
+                    <Label Content="Votre Nom"></Label>
+                    <TextBox x:Name="Nom" Width="150" VerticalAlignment="Center" />
+                    <Label Content="Votre nom d'utilisateur"></Label>
+                    <TextBox x:Name="NomUtilisateur" Width="150" VerticalAlignment="Center" />
+                    <Label Content="votre adresse E-mail"></Label>
+                    <TextBox x:Name="Mail" Width="150" VerticalAlignment="Center" />
+                    <Label Content="Veuillez confirmer votre E-mail"></Label>
+                    <TextBox x:Name="ConfirmationMail" Width="150" VerticalAlignment="Center" />
+                    <Label Content="Veuillez saisir votre mot de passe"></Label>
+                    <TextBox x:Name="MdpUtilisateur" Width="150" VerticalAlignment="Center" />
+                    <Label Content="Le mot de passe doit contenir au minimum 6 caractère et un chiffre" />
+                    <Button x:Name="ValiderProfil" Content="Valider" Click="Valider_Click" />
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
     </Grid>
 </Window>
