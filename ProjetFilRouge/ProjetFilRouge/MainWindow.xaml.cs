@@ -24,5 +24,20 @@ namespace ProjetFilRouge
         {
             InitializeComponent();
         }
+
+        private void Valider_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Connexion_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Connexion.xaml", UriKind.Relative));
+        }
+
+        private void Info_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

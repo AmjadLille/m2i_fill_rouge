@@ -8,7 +8,7 @@
         Title="ProjetFilRouge" Height="600" Width="800">
     <Grid>
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
-            <Button x:Name="Info" Content="Modifier Contact" Click="Info_Click" />
+            <Button x:Name="Infos" Content="Infos" Click="Infos_Click" />
             <Button x:Name="Connexion" Content="Connexion" Click="Connexion_Click" />
      
         </StackPanel>
