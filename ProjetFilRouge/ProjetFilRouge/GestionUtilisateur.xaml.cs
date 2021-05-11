@@ -21,5 +21,14 @@ namespace ProjetFilRouge
         {
             InitializeComponent();
         }
+
+        private void AjouterUtilisateur_Click(object sender, RoutedEventArgs e)
+        { }
+
+        private void ModifierUtilisateur_Click(object sender, RoutedEventArgs e)
+        { }
+
+        private void ParcourirUtilisateur_Click(object sender, RoutedEventArgs e)
+        { }
     }
 }

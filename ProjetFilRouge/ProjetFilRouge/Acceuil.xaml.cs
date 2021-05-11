@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetFilRouge.Classes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +18,37 @@ namespace ProjetFilRouge
     /// </summary>
     public partial class Acceuil : Window
     {
-        public Acceuil()
+
+        int id;
+
+        public int Id { get => id; set => id = value; }
+
+        public Acceuil(int id)
         {
             InitializeComponent();
+            int Id = id;
+        }
+
+        private void deconnexion_Click(object sender, RoutedEventArgs e) 
+        {
+            Close();
+        }
+
+        private void GestionContenu_Click(object sender, RoutedEventArgs e)
+        {
+            GestionContenu g = new GestionContenu();
+            g.Show();
+        }
+
+        private void GestionUtilisateur_Click(object sender, RoutedEventArgs e)
+        {
+            GestionUtilisateur g = new GestionUtilisateur();
+            g.Show();
+        }
+
+        private void AfficherNomAdmin(int id)
+        {
+            List<User> us = User.UserRecherche(id,"","","","");  
         }
     }
 }

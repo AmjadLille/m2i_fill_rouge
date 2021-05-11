@@ -21,5 +21,15 @@ namespace ProjetFilRouge
         {
             InitializeComponent();
         }
+
+        private void ModifierProfil_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Retour_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

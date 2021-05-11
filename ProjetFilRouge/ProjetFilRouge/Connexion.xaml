@@ -11,8 +11,8 @@
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Text="Fil-Rouge" HorizontalAlignment="Center" Margin=" 10 10 10 10"/>
                 
-                <TextBlock Text="Votre adresse E-mail ou nom utilisateur"/>
-                <TextBox x:Name="Mail" Margin="0 5 0 0"/>
+                <TextBlock Text="Pseudo"/>
+                <TextBox x:Name="Pseudo" Margin="0 5 0 0"/>
                 <TextBlock Text="Votre mot de passe"/>
                 <TextBox x:Name="MdpUtilisateur" Margin="0 5 0 0"/>
                 <Button x:Name="Login" Content="Login" Click="Login_Click" />

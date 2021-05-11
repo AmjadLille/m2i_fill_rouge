@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetFilRouge.Classes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,6 +21,33 @@ namespace ProjetFilRouge
         public Connexion()
         {
             InitializeComponent();
+        }
+
+        public void Login_Click(object sender, RoutedEventArgs e)
+        {
+            string mdp = MdpUtilisateur.Text;
+            string pseudo = Pseudo.Text;
+
+            List<User> us = User.UserRecherche(-1,"","",pseudo,"");
+
+            if (us.Count == 0)
+            {
+                MessageBox.Show("Aucun compte avec ce pseudo", "Compte introuvable", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                //Expression lambda recherche un user dans la liste us dont le pseudo est notre pseudo
+                User admin = us.Find(user => user.Pseudo == pseudo);
+
+                if (admin.IsAdmin)
+                {
+                    Acceuil g = new Acceuil(admin.Id);
+                    g.Show();
+                }
+                else
+                { MessageBox.Show("Vous n'êtes pas administrateur", "Compte admin requis", MessageBoxButton.OK, MessageBoxImage.Error); }
+            }
+           
         }
     }
 }

@@ -15,12 +15,12 @@ namespace ProjetFilRouge.Classes
         string mdp;
         string email;
         int isStatut;
-        int isAdmin;
+        bool isAdmin;
 
         #region Constructeurs
         public User()
         {}
-        public User(int id, string nom, string prenom, string pseudo, string mdp, string email, int isStatut, int isAdmin)
+        public User(int id, string nom, string prenom, string pseudo, string mdp, string email, int isStatut, bool isAdmin)
         {
             this.id = id;
             this.nom = nom;
@@ -41,7 +41,7 @@ namespace ProjetFilRouge.Classes
         public string Mdp { get => mdp; set => mdp = value; }
         public string Email { get => email; set => email = value; }
         public int IsStatut { get => isStatut; set => isStatut = value; }
-        public int IsAdmin { get => isAdmin; set => isAdmin = value; }
+        public bool IsAdmin { get => isAdmin; set => isAdmin = value; }
 
         #endregion
 
@@ -107,7 +107,7 @@ namespace ProjetFilRouge.Classes
                     reader.GetString(4),//mdp                   
                     reader.GetString(5),//email                   
                     reader.GetInt32(6),//isStatut                   
-                    reader.GetInt32(7)//isAdmin                   
+                    reader.GetBoolean(7)//isAdmin                   
                     );
                 liste.Add(u);
             }

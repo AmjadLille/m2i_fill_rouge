@@ -11,7 +11,8 @@ namespace ProjetFilRouge.Classes
         int id;
         string titre;
         int idUser;
-        int idCana;
+        int idCanal;
+        //List<Commentaire> commentaires;
         string link;
         string img;
         int isStatut;
@@ -24,7 +25,8 @@ namespace ProjetFilRouge.Classes
             this.id = id;
             this.titre = titre;
             this.idUser = idUser;
-            this.idCana = idCana;
+            this.idCanal = idCana;
+            //this.commentaires = new List<Commentaire>();
             this.link = link;
             this.img = img;
             this.isStatut = isStatut;
@@ -34,10 +36,11 @@ namespace ProjetFilRouge.Classes
         public int Id { get => id; set => id = value; }
         public string Titre { get => titre; set => titre = value; }
         public int IdUser { get => idUser; set => idUser = value; }
-        public int IdCana { get => idCana; set => idCana = value; }
+        public int IdCana { get => idCanal; set => idCanal = value; }
         public string Link { get => link; set => link = value; }
         public string Img { get => img; set => img = value; }
         public int IsStatut { get => isStatut; set => isStatut = value; }
+        //public List<Commentaire> Commentaires { get => commentaires; set => commentaires = value; }
         #endregion
 
         public static List<Contenu> ContenuRecherche(int id, string t, int idU, int idCo, int idCa, string link, string img, int statut)
@@ -61,37 +64,37 @@ namespace ProjetFilRouge.Classes
                 {
                     if (i != 0)
                     { request += " and "; }
-                    request += "nom = @n ";
+                    request += "titre = @t ";
                 }
                 if (idU != -1)
                 {
                     if (i != 0)
                     { request += " and "; }
-                    request += "prenom = @p ";
+                    request += "idUser = @idU ";
                 }
                 if (idCo != -1)
                 {
                     if (i != 0)
                     { request += " and "; }
-                    request += "pseudo = @ps ";
+                    request += "idComment = @idCo ";
                 }
                 if (idCa != -1)
                 {
                     if (i != 0)
                     { request += " and "; }
-                    request += "email = @email ";
+                    request += "idCanal = @idCa ";
                 }
                 if (link != "")
                 {
                     if (i != 0)
                     { request += " and "; }
-                    request += "email = @email ";
+                    request += "link = @link ";
                 }
                 if (img != "")
                 {
                     if (i != 0)
                     { request += " and "; }
-                    request += "email = @email ";
+                    request += "img = @img ";
                 }
                 if (statut != 0)
                 {
@@ -103,26 +106,29 @@ namespace ProjetFilRouge.Classes
 
             SqlCommand command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@id", id));
-            command.Parameters.Add(new SqlParameter("@n", n));
-            command.Parameters.Add(new SqlParameter("@p", p));
-            command.Parameters.Add(new SqlParameter("@ps", ps));
-            command.Parameters.Add(new SqlParameter("@email", email));
+            command.Parameters.Add(new SqlParameter("@n", t));
+            command.Parameters.Add(new SqlParameter("@idU", idU));
+            command.Parameters.Add(new SqlParameter("@idCo", idCo));
+            command.Parameters.Add(new SqlParameter("@idCa", idCa));
+            command.Parameters.Add(new SqlParameter("@link", link));
+            command.Parameters.Add(new SqlParameter("@img", img));
+            command.Parameters.Add(new SqlParameter("@isStatut", statut));
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
 
             while (reader.Read())
             {
-                User u = new User(
+                Contenu c = new Contenu(
                     reader.GetInt32(0),//id
-                    reader.GetString(1),//nom                   
-                    reader.GetString(2),//prenom                   
-                    reader.GetString(3),//pseudo                   
-                    reader.GetString(4),//mdp                   
-                    reader.GetString(5),//email                   
-                    reader.GetInt32(6),//isStatut                   
-                    reader.GetInt32(7)//isAdmin                   
+                    reader.GetString(1),//titre                   
+                    reader.GetInt32(2),//idUser                   
+                    //reader.GetInt32(3),//idComment                   
+                    reader.GetInt32(4),//idCanal             
+                    reader.GetString(5),//link                   
+                    reader.GetString(6),//img                   
+                    reader.GetInt32(7)//isStatut                   
                     );
-                liste.Add(u);
+                liste.Add(c);
             }
             reader.Close();
             command.Dispose();
@@ -142,7 +148,7 @@ namespace ProjetFilRouge.Classes
             command.Parameters.Add(new SqlParameter("@pseudo", u.Pseudo));
             command.Parameters.Add(new SqlParameter("@mdp", u.Mdp));
             command.Parameters.Add(new SqlParameter("@email", u.Email));
-            command.Parameters.Add(new SqlParameter("@isAdmin", u.isAdmin));
+            command.Parameters.Add(new SqlParameter("@isAdmin", u.IsAdmin));
             connection.Open();
 
             int idUser = (int)command.ExecuteScalar();
@@ -169,8 +175,8 @@ namespace ProjetFilRouge.Classes
             command.Parameters.Add(new SqlParameter("@pseudo", u.Pseudo));
             command.Parameters.Add(new SqlParameter("@mdp", u.Mdp));
             command.Parameters.Add(new SqlParameter("@email", u.Email));
-            command.Parameters.Add(new SqlParameter("@isStatut", u.isStatut));
-            command.Parameters.Add(new SqlParameter("@isAdmin", u.isAdmin));
+            command.Parameters.Add(new SqlParameter("@isStatut", u.IsStatut));
+            command.Parameters.Add(new SqlParameter("@isAdmin", u.IsAdmin));
             connection.Open();
 
             int valid = command.ExecuteNonQuery();

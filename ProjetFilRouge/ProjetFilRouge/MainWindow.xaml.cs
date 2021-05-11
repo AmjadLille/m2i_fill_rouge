@@ -32,10 +32,21 @@ namespace ProjetFilRouge
 
         private void Connexion_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Connexion.xaml", UriKind.Relative));
+            Connexion g = new Connexion();
+            g.Show();
         }
 
         private void Info_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Infos_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Connexion_Click_1(object sender, RoutedEventArgs e)
         {
 
         }

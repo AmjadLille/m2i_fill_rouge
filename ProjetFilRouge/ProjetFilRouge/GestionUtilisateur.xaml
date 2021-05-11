@@ -32,9 +32,9 @@
                     <RadioButton x:Name="AdminNon" Content="Non" Margin="0 5 10 0" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                    <Button x:Name="ParcourirUtilisateur" Content="Parcourir" Click="ParcourirUtilisateur_Click" Margin="10"/>
-                    <Button x:Name="ModifierUtilisateur" Content="Modifier" Click="ModifierUtilisateur_Click" Margin="10"/>
-                    <Button x:Name="AjouterUtilisateur" Content="Ajouter" Click="AjouterUtilisateur_Click" Margin="10"/>
+                    <Button x:Name="parcourirutilisateur" Content="parcourir" Click="ParcourirUtilisateur_Click" Margin="10"/>
+                    <Button x:Name="modifierutilisateur" Content="modifier" Click="ModifierUtilisateur_Click" Margin="10"/>
+                    <Button x:Name="ajouterutilisateur" Content="ajouter" Click="AjouterUtilisateur_Click" Margin="10"/>
                 </StackPanel>
             </StackPanel>
         </GroupBox >

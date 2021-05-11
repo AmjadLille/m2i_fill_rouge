@@ -21,5 +21,8 @@ namespace ProjetFilRouge
         {
             InitializeComponent();
         }
+
+        private void ParcourirContenu_Click(object sender, RoutedEventArgs e)
+        { }
     }
 }
