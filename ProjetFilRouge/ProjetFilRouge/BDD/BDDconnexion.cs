@@ -8,6 +8,6 @@ namespace ProjetFilRouge.BDD
     class BDDconnexion
     {
         static string connectionString = @"Data Source=(LOCALDB)\projetFilRouge;Integrated Security=True";
-        public static SqlConnection New { get => new SqlConnection(connectionString); }
+        public static SqlConnection Connection { get => new SqlConnection(connectionString); }
     }
 }
