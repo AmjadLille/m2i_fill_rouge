@@ -1,0 +1,46 @@
+﻿<Window x:Class="ProjetFilRouge.GestionContenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjetFilRouge"
+        mc:Ignorable="d"
+        Title="GestionContenu" Height="800" Width="800">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Gestion de contenu" HorizontalAlignment="Center" VerticalAlignment="Top" Margin=" 20"/>
+        </StackPanel>
+        <GroupBox HorizontalAlignment="Center" VerticalAlignment="Top" Height="300" Width="500" Margin="50">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Height="229">
+                <TextBlock Text="Titre :" Margin="0 5 0 0" />
+                <TextBox x:Name="TitreContenu" Margin="0 5 0 0" Width="500"/>
+                <TextBlock Text="Lien :" Margin="0 5 0 0"/>
+                <TextBox x:Name="LienContenu" Margin="0 5 0 0" Width="500"/>
+                <TextBlock Text="Image :" Margin="0 5 0 0"/>
+                <TextBox x:Name="ImageContenu" Margin="0 5 0 0" Width="500"/>
+                <TextBlock Text="Statut :" Margin="0 5 0 0"/>
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton  x:Name="StatutActif" Content="Actif" Margin="0 5 10 0"/>
+                    <RadioButton x:Name="StatutInactif" Content="Inactif" Margin="0 5 10 0" />
+                </StackPanel>
+                <StackPanel>
+                    <Button x:Name="ParcourirContenu" Content="Parcourir" Click="ParcourirContenu_Click" Margin="10"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="100">
+            <ListView x:Name="ListeViewContact" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="300">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="100" Header="IdContenu" DisplayMemberBinding="{Binding IdContenu}"/>
+                        <GridViewColumn Width="200" Header="Titre" DisplayMemberBinding="{Binding TitreContenu}"/>
+                        <GridViewColumn Width="200" Header="Pseudonyme" DisplayMemberBinding="{Binding PseudonymeUtilisateur}"/>
+                        <GridViewColumn Width="100" Header="Statut" DisplayMemberBinding="{Binding IdContenu}"/>
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </StackPanel>
+    </Grid>
+</Window>
