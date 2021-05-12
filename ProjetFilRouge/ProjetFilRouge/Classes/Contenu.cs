@@ -175,7 +175,7 @@ namespace ProjetFilRouge.Classes
             SqlCommand command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@titre", c.Titre));
             command.Parameters.Add(new SqlParameter(" @idUser", c.IdUser));
-            command.Parameters.Add(new SqlParameter("@idComment", c.idCommentaires));
+            command.Parameters.Add(new SqlParameter("@idComment", c.IdCommentaires));
             command.Parameters.Add(new SqlParameter("@idCanal", c.IdCana));
             command.Parameters.Add(new SqlParameter("@link", c.Link));
             command.Parameters.Add(new SqlParameter("@img", c.Img));
