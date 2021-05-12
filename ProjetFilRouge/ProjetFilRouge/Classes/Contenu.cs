@@ -12,7 +12,7 @@ namespace ProjetFilRouge.Classes
         string titre;
         int idUser;
         int idCanal;
-        //List<Commentaire> commentaires;
+        int idCommentaires;
         string link;
         string img;
         int isStatut;
@@ -20,13 +20,13 @@ namespace ProjetFilRouge.Classes
         #region Constructeurs
         public Contenu()
         {}
-        public Contenu(int id, string titre, int idUser, int idCana, string link, string img, int isStatut)
+        public Contenu(int id, string titre, int idUser, int idCana, int idCo ,string link, string img, int isStatut)
         {
             this.id = id;
             this.titre = titre;
             this.idUser = idUser;
             this.idCanal = idCana;
-            //this.commentaires = new List<Commentaire>();
+            this.idCommentaires = idCo;
             this.link = link;
             this.img = img;
             this.isStatut = isStatut;
@@ -40,7 +40,7 @@ namespace ProjetFilRouge.Classes
         public string Link { get => link; set => link = value; }
         public string Img { get => img; set => img = value; }
         public int IsStatut { get => isStatut; set => isStatut = value; }
-        //public List<Commentaire> Commentaires { get => commentaires; set => commentaires = value; }
+        public int IdCommentaires { get => idCommentaires; set => idCommentaires = value; }
         #endregion
 
         public static List<Contenu> ContenuRecherche(int id, string t, int idU, int idCo, int idCa, string link, string img, int statut)
@@ -122,7 +122,7 @@ namespace ProjetFilRouge.Classes
                     reader.GetInt32(0),//id
                     reader.GetString(1),//titre                   
                     reader.GetInt32(2),//idUser                   
-                    //reader.GetInt32(3),//idComment                   
+                    reader.GetInt32(3),//idComment                   
                     reader.GetInt32(4),//idCanal             
                     reader.GetString(5),//link                   
                     reader.GetString(6),//img                   
@@ -136,47 +136,51 @@ namespace ProjetFilRouge.Classes
             return liste;
         }
 
-        public static int AjouterUser(User u)
+        public static int AjouterContenu(Contenu c)
         {
             SqlConnection connection = BDDconnexion.Connection;
-            string request = "Insert into Users output inserted.id " +
-                             "values(@nom, @prenom, @pseudo, @mdp, @email, 1, @isAdmin)";
+            string request = "INSERT INTO Contenu " +
+                             "values(@titre, @idUser, @idComment, @idCanal, @link, @img, @isStatut)";
 
             SqlCommand command = new SqlCommand(request, connection);
-            command.Parameters.Add(new SqlParameter("@nom", u.Nom));
-            command.Parameters.Add(new SqlParameter("@prenom", u.Prenom));
-            command.Parameters.Add(new SqlParameter("@pseudo", u.Pseudo));
-            command.Parameters.Add(new SqlParameter("@mdp", u.Mdp));
-            command.Parameters.Add(new SqlParameter("@email", u.Email));
-            command.Parameters.Add(new SqlParameter("@isAdmin", u.IsAdmin));
+            command.Parameters.Add(new SqlParameter("@titre", c.Titre));
+            command.Parameters.Add(new SqlParameter("@idUser", c.IdUser));
+            command.Parameters.Add(new SqlParameter("@idComment", c.IdCommentaires));
+            command.Parameters.Add(new SqlParameter("@idCanal", c.IdCana));
+            command.Parameters.Add(new SqlParameter("@link", c.Link));
+            command.Parameters.Add(new SqlParameter("@img", c.Img));
+            command.Parameters.Add(new SqlParameter("@isStatut", c.IsStatut));
             connection.Open();
 
-            int idUser = (int)command.ExecuteScalar();
+            int idContenu = (int)command.ExecuteScalar();
             command.Dispose();
             connection.Close();
 
-            return idUser;
+            return idContenu;
         }
 
-        public static bool ModifierUser(User u)
+        public static bool ModifierContenu(Contenu c)
         {
             SqlConnection connection = BDDconnexion.Connection;
-            string request = "Update Users set " +
-                "nom = @nom, " +
-                "pseudo = @pseudo, " +
-                "mdp = @mdp, " +
-                "email = @email," +
-                "isStatut = @isStatut" +
-                "isAdmin = @isAdmin " +
+            string request = "Update Contenu set " +
+                "titre = @titre, " +
+                "idUser = @idUser, " +
+                "idComment = @idComment, " +
+                "idCanal = @idCanal," +
+                "link = @link" +
+                "img = @img " +
+                "isStatut = @isStatut " +
                 "where id = @id";
 
             SqlCommand command = new SqlCommand(request, connection);
-            command.Parameters.Add(new SqlParameter("@nom", u.Nom));
-            command.Parameters.Add(new SqlParameter("@pseudo", u.Pseudo));
-            command.Parameters.Add(new SqlParameter("@mdp", u.Mdp));
-            command.Parameters.Add(new SqlParameter("@email", u.Email));
-            command.Parameters.Add(new SqlParameter("@isStatut", u.IsStatut));
-            command.Parameters.Add(new SqlParameter("@isAdmin", u.IsAdmin));
+            command.Parameters.Add(new SqlParameter("@titre", c.Titre));
+            command.Parameters.Add(new SqlParameter(" @idUser", c.IdUser));
+            command.Parameters.Add(new SqlParameter("@idComment", c.idCommentaires));
+            command.Parameters.Add(new SqlParameter("@idCanal", c.IdCana));
+            command.Parameters.Add(new SqlParameter("@link", c.Link));
+            command.Parameters.Add(new SqlParameter("@img", c.Img));
+            command.Parameters.Add(new SqlParameter("@isStatut", c.IsStatut));
+            command.Parameters.Add(new SqlParameter("@id", c.Id));
             connection.Open();
 
             int valid = command.ExecuteNonQuery();
