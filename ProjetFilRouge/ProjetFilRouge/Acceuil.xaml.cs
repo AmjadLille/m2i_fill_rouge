@@ -35,7 +35,7 @@ namespace ProjetFilRouge
 
         private void GestionContenu_Click(object sender, RoutedEventArgs e)
         {
-            GestionContenu g = new GestionContenu();
+            GestionContenu g = new GestionContenu(Id);
             g.Show();
         }
 

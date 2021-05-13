@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="GestionContenu" Height="600" Width="800">
     <Grid>
-        <GroupBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="600" Margin="10">
+        <GroupBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="700" Margin="10">
             <StackPanel>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Height="229">
                     <GroupBox Header="Titre">
@@ -39,6 +39,7 @@
                     </GroupBox>
                     <StackPanel Orientation="Horizontal">
                         <Button x:Name="ParcourirContenu" Content="Parcourir" Click="ParcourirContenu_Click" Margin="10"/>
+                        <Button x:Name="AjouterContenu" Content="Ajouter" Click="AjouterContenu_Click" Margin="10"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">

@@ -20,8 +20,13 @@ namespace ProjetFilRouge
     public partial class GestionContenu : Window
     {
         private static List<Contenu> contenus;
-        public GestionContenu()
+        int id;
+
+        public int Id { get => id; set => id = value; }
+
+        public GestionContenu(int id)
         {
+            Id = id;
             InitializeComponent();
             AfficherListeContenu();
             //AddToList();
@@ -59,6 +64,23 @@ namespace ProjetFilRouge
             List<Contenu> liste = Contenu.ContenuRecherche(-1,"",-1,-1,-1,"","",0);
             contenus = liste;
             ListeViewContact.ItemsSource = contenus;
+        }
+
+        private void AjouterContenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (TitreContenu.Text != "")
+            {
+                if (ImageContenu.Text != "" || LienContenu.Text != "" )
+                {
+                    MessageBox.Show("Merci de confirmer l'ajout : "+ TitreContenu.Text + "<Button>I<Button>");
+                    Contenu c = new Contenu(0,TitreContenu.Text,Id,-1,-1,LienContenu.Text,ImageContenu.Text,2);
+                    Contenu.AjouterContenu(c);
+                }
+                else
+                { MessageBox.Show("Vous n'avez fournit aucun fichier","Aucun fichier fournit",MessageBoxButton.OK,MessageBoxImage.Error); }
+            }
+            else
+            { MessageBox.Show("Vous devez donner un nom à votre fichier","Erreur titre",MessageBoxButton.OK,MessageBoxImage.Error); }
         }
     }
 }

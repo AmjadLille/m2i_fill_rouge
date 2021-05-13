@@ -197,7 +197,7 @@ namespace ProjetFilRouge.Classes
         public static int AjouterContenu(Contenu c)
         {
             SqlConnection connection = BDDconnexion.Connection;
-            string request = "INSERT INTO Contenu " +
+            string request = "INSERT INTO Contenu OUTPUT INSERTED.ID " +
                              "values(@titre, @idUser, @idComment, @idCanal, @link, @img, @isStatut)";
 
             SqlCommand command = new SqlCommand(request, connection);
