@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjetFilRouge"
         mc:Ignorable="d"
-        Title="ProjetFilRouge" Height="600" Width="800">
+        Title="ProjetFilRouge" Height="500" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
     <Grid>
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
             <Button x:Name="Infos" Content="Infos" Click="Infos_Click" />

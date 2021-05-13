@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjetFilRouge"
         mc:Ignorable="d"
-        Title="Connexion" Height="300" Width="300">
+        Title="Connexion" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
     <Grid>
         <GroupBox>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">

@@ -43,6 +43,7 @@ namespace ProjetFilRouge
                 {
                     Acceuil g = new Acceuil(admin.Id);
                     g.Show();
+                    Close();
                 }
                 else
                 { MessageBox.Show("Vous n'êtes pas administrateur", "Compte admin requis", MessageBoxButton.OK, MessageBoxImage.Error); }

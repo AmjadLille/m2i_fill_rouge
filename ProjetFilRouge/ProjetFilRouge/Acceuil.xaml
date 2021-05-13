@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjetFilRouge"
         mc:Ignorable="d"
-        Title="Acceuil" Height="450" Width="800">
+        Title="Acceuil" Height="400" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 20 20 0">
             <TextBlock x:Name="nomAdmin" Text="Nom admin" Margin="10">

@@ -61,6 +61,7 @@ namespace ProjetFilRouge
         {
             Connexion g = new Connexion();
             g.Show();
+            Close();
         }
 
         private void Infos_Click(object sender, RoutedEventArgs e)

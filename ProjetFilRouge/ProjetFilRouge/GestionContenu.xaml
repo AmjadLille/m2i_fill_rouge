@@ -20,8 +20,8 @@
                 <TextBox x:Name="ImageContenu" Margin="0 5 0 0" Width="500"/>
                 <TextBlock Text="Statut :" Margin="0 5 0 0"/>
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton  x:Name="StatutActif" Content="Actif" Margin="0 5 10 0"/>
-                    <RadioButton x:Name="StatutInactif" Content="Inactif" Margin="0 5 10 0" />
+                    <RadioButton GroupName="statut" x:Name="StatutActif" Content="Actif" Margin="0 5 10 0"/>
+                    <RadioButton GroupName="statut" x:Name="StatutInactif" Content="Inactif" Margin="0 5 10 0" />
                 </StackPanel>
                 <StackPanel>
                     <Button x:Name="ParcourirContenu" Content="Parcourir" Click="ParcourirContenu_Click" Margin="10"/>
@@ -32,10 +32,10 @@
             <ListView x:Name="ListeViewContact" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="300">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="100" Header="IdContenu" DisplayMemberBinding="{Binding IdContenu}"/>
+                        <GridViewColumn Width="100" Header="IdContenu" DisplayMemberBinding="{Binding Id}"/>
                         <GridViewColumn Width="200" Header="Titre" DisplayMemberBinding="{Binding TitreContenu}"/>
-                        <GridViewColumn Width="200" Header="Pseudonyme" DisplayMemberBinding="{Binding PseudonymeUtilisateur}"/>
-                        <GridViewColumn Width="100" Header="Statut" DisplayMemberBinding="{Binding IdContenu}"/>
+                        <GridViewColumn Width="200" Header="Pseudonyme" DisplayMemberBinding="{Binding IdUser}"/>
+                        <GridViewColumn Width="100" Header="Statut" DisplayMemberBinding="{Binding IdCommentaires}"/>
 
                     </GridView>
                 </ListView.View>

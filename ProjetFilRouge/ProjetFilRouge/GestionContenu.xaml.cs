@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetFilRouge.Classes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,9 +21,17 @@ namespace ProjetFilRouge
         public GestionContenu()
         {
             InitializeComponent();
+            AfficherListeContenu();
         }
 
         private void ParcourirContenu_Click(object sender, RoutedEventArgs e)
-        { }
+        {
+            
+            
+        }
+        private void AfficherListeContenu()
+        {
+           List<Contenu> liste = Contenu.ContenuRecherche(-1, "", -1, -1, -1, "", "", 0);
+        }
     }
 }
