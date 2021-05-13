@@ -91,55 +91,63 @@ namespace ProjetFilRouge.Classes
                 {
                     if (i != 0)
                     { request += " and "; }
-                    request += "id = @id ";
+                    request += "Contenu.id = @id ";
+                    i++;
                 }
                 if (t != "")
                 {
                     if (i != 0)
-                    { request += " and "; }
-                    request += "titre = @t ";
+                    { request += "and "; }
+                    request += "Contenu.titre like @t";
+                    i++;
                 }
                 if (idU != -1)
                 {
                     if (i != 0)
-                    { request += " and "; }
-                    request += "idUser = @idU ";
+                    { request += "and "; }
+                    request += "Contenu.idUser = @idU ";
+                    i++;
                 }
                 if (idCo != -1)
                 {
                     if (i != 0)
-                    { request += " and "; }
-                    request += "idComment = @idCo ";
+                    { request += "and "; }
+                    request += "Contenu.idComment = @idCo ";
+                    i++;
                 }
                 if (idCa != -1)
                 {
                     if (i != 0)
-                    { request += " and "; }
-                    request += "idCanal = @idCa ";
+                    { request += "and "; }
+                    request += "Contenu.idCanal = @idCa ";
+                    i++;
                 }
                 if (link != "")
                 {
                     if (i != 0)
-                    { request += " and "; }
-                    request += "link = @link ";
+                    { request += "and "; }
+                    request += "Contenu.link = @link ";
+                    i++;
                 }
                 if (img != "")
                 {
                     if (i != 0)
-                    { request += " and "; }
-                    request += "img = @img ";
+                    { request += "and "; }
+                    request += "Contenu.img = @img ";
+                    i++;
                 }
                 if (statut != 0)
                 {
                     if (i != 0)
-                    { request += " and "; }
-                    request += "isStatut = @isS ";
+                    { request += "and "; }
+                    request += "Contenu.isStatut = @isStatut";
+                    i++;
                 }
             }
 
             SqlCommand command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@id", id));
-            command.Parameters.Add(new SqlParameter("@t", t));
+            command.Parameters.Add(new SqlParameter("@t", "%"+t+"%"));
             command.Parameters.Add(new SqlParameter("@idU", idU));
             command.Parameters.Add(new SqlParameter("@idCo", idCo));
             command.Parameters.Add(new SqlParameter("@idCa", idCa));
@@ -166,8 +174,8 @@ namespace ProjetFilRouge.Classes
                     reader.GetInt32(0),//id
                     reader.GetString(1),//titre                   
                     reader.GetString(2),//Pseudo                   
-                    reader.GetString(3),//pseudo ownercanal                   
-                    reader.GetString(4),//message             
+                    reader.GetString(4),//pseudo ownercanal                   
+                    reader.GetString(3),//message             
                     reader.GetString(5),//link                   
                     reader.GetString(6),//img                   
                     reader.GetInt32(7)//isStatut                   

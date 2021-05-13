@@ -29,7 +29,13 @@ namespace ProjetFilRouge
 
         private void ParcourirContenu_Click(object sender, RoutedEventArgs e)
         {
-            List<Contenu> liste = Contenu.ContenuRecherche(-1,TitreContenu.Text, -1, -1, -1, "", "", 0);
+            int s = 0;
+            if (StatutActif.IsChecked == true)
+            { s = 2; }
+            if (StatutInactif.IsChecked == true)
+            { s = 3; }
+
+            List<Contenu> liste = Contenu.ContenuRecherche(-1,TitreContenu.Text, -1, -1, -1, "", "", s);
             contenus = liste;
             ListeViewContact.ItemsSource = contenus;
         }
