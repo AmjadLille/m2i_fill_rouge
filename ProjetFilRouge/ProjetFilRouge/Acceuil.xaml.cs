@@ -27,12 +27,11 @@ namespace ProjetFilRouge
         {
             InitializeComponent();
             int Id = id;
+            AfficherNomAdmin(Id);
         }
 
         private void deconnexion_Click(object sender, RoutedEventArgs e) 
-        {
-            Close();
-        }
+        {Close();}
 
         private void GestionContenu_Click(object sender, RoutedEventArgs e)
         {
@@ -48,7 +47,10 @@ namespace ProjetFilRouge
 
         private void AfficherNomAdmin(int id)
         {
-            List<User> us = User.UserRecherche(id,"","","","");  
+            List<User> us = User.UserRecherche(id,"","","","");
+            User admin = us.Find(user => user.Id == id);
+
+            nomAdmin.Text = admin.Pseudo;
         }
     }
 }

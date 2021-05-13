@@ -8,7 +8,7 @@
         Title="Acceuil" Height="450" Width="800">
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 20 20 0">
-            <TextBlock Text="Nom admin" Margin="10">
+            <TextBlock x:Name="nomAdmin" Text="Nom admin" Margin="10">
             </TextBlock>
             <Button x:Name="Deconnexion" Content="Deconnexion" Click="deconnexion_Click" />
             
