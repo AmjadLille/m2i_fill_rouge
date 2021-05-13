@@ -35,9 +35,23 @@ namespace ProjetFilRouge
             if (StatutInactif.IsChecked == true)
             { s = 3; }
 
-            List<Contenu> liste = Contenu.ContenuRecherche(-1,TitreContenu.Text, -1, -1, -1, "", "", s);
+            string i = "";
+            if (Img.IsChecked == true)
+            { i = "*"; }
+            if (NoImg.IsChecked == true)
+            {}
+
+            string l = "";
+            if (Link.IsChecked == true)
+            { l = "*"; }
+            if (NoLink.IsChecked == true)
+            { }
+
+            List<Contenu> liste = Contenu.ContenuRecherche(-1,TitreContenu.Text, -1, -1, -1, l, i, s);
             contenus = liste;
             ListeViewContact.ItemsSource = contenus;
+            StatutActif.IsChecked = false;
+            StatutInactif.IsChecked = false;
         }
 
         private void AfficherListeContenu()

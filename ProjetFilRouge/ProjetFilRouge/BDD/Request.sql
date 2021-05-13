@@ -48,5 +48,7 @@ left join Users
 on Users.id = Contenu.idUser
 left join Commentaire
 on Commentaire.id = Contenu.idComment
-where Contenu.link like '%go%';
+where Contenu.link like '%%';
+
+
 

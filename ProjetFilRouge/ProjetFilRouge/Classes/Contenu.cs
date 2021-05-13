@@ -125,15 +125,21 @@ namespace ProjetFilRouge.Classes
                 if (link != "")
                 {
                     if (i != 0)
-                    { request += "and "; }
-                    request += "Contenu.link = @link ";
+                        { request += "and "; }
+                    if (link == "*")
+                        {request += "Contenu.link like '%%'"; }
+                    else
+                        request += "Contenu.link = @link ";
                     i++;
                 }
                 if (img != "")
                 {
                     if (i != 0)
-                    { request += "and "; }
-                    request += "Contenu.img = @img ";
+                        { request += "and "; }
+                    if (img == "*")
+                         { request += "Contenu.img like '%%'"; }
+                    else
+                        { request += "Contenu.img = @img "; }
                     i++;
                 }
                 if (statut != 0)
@@ -151,8 +157,8 @@ namespace ProjetFilRouge.Classes
             command.Parameters.Add(new SqlParameter("@idU", idU));
             command.Parameters.Add(new SqlParameter("@idCo", idCo));
             command.Parameters.Add(new SqlParameter("@idCa", idCa));
-            command.Parameters.Add(new SqlParameter("@link", link));
-            command.Parameters.Add(new SqlParameter("@img", img));
+            command.Parameters.Add(new SqlParameter("@link", "%"+link+"%"));
+            command.Parameters.Add(new SqlParameter("@img", "%"+img + "%"));
             command.Parameters.Add(new SqlParameter("@isStatut", statut));
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();

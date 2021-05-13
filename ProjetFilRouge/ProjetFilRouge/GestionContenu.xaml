@@ -5,43 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjetFilRouge"
         mc:Ignorable="d"
-        Title="GestionContenu" Height="800" Width="800">
+        Title="GestionContenu" Height="600" Width="800">
     <Grid>
-        <StackPanel>
-            <TextBlock Text="Gestion de contenu" HorizontalAlignment="Center" VerticalAlignment="Top" Margin=" 20"/>
-        </StackPanel>
-        <GroupBox HorizontalAlignment="Center" VerticalAlignment="Top" Height="300" Width="500" Margin="50">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Height="229">
-                <TextBlock Text="Titre :" Margin="0 5 0 0" />
-                <TextBox x:Name="TitreContenu" Margin="0 5 0 0" Width="500"/>
-                <TextBlock Text="Lien :" Margin="0 5 0 0"/>
-                <TextBox x:Name="LienContenu" Margin="0 5 0 0" Width="500"/>
-                <TextBlock Text="Image :" Margin="0 5 0 0"/>
-                <TextBox x:Name="ImageContenu" Margin="0 5 0 0" Width="500"/>
-                <TextBlock Text="Statut :" Margin="0 5 0 0"/>
-                <StackPanel Orientation="Horizontal">
-                    <RadioButton GroupName="statut" x:Name="StatutActif" Content="Actif" Margin="0 5 10 0"/>
-                    <RadioButton GroupName="statut" x:Name="StatutInactif" Content="Inactif" Margin="0 5 10 0" />
+        <GroupBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="600" Margin="10">
+            <StackPanel>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Height="229">
+                    <GroupBox Header="Titre">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="TitreContenu" Margin="0 5 0 0" Width="500"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Lien">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="LienContenu" Margin="0 5 0 0" Width="200"/>
+                            <RadioButton GroupName="contientLien" x:Name="Link" Content="Lien" Margin="10 5 0 0"/>
+                            <RadioButton GroupName="contientLien" x:Name="NoLink" Content="Pas de lien" Margin="0 5 0 0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Image">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="ImageContenu" Margin="0 5 0 0" Width="200"/>
+                            <RadioButton GroupName="contientImage" x:Name="Img" Content="Image" Margin="10 5 0 0"/>
+                            <RadioButton GroupName="contientImage" x:Name="NoImg" Content="Pas d'image" Margin="0 5 0 0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Statut">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton GroupName="statut" x:Name="StatutActif" Content="Actif" Margin="10 5 10 0"/>
+                                <RadioButton GroupName="statut" x:Name="StatutInactif" Content="Inactif" Margin="0 5 10 0" />
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="ParcourirContenu" Content="Parcourir" Click="ParcourirContenu_Click" Margin="10"/>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel>
-                    <Button x:Name="ParcourirContenu" Content="Parcourir" Click="ParcourirContenu_Click" Margin="10"/>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">
+                    <ListView x:Name="ListeViewContact" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="300">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="50" Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                                <GridViewColumn Width="100" Header="Titre" DisplayMemberBinding="{Binding Titre}"/>
+                                <GridViewColumn Width="100" Header="Pseudo" DisplayMemberBinding="{Binding Pseudo}"/>
+                                <GridViewColumn Width="100" Header="Créateur du canal" DisplayMemberBinding="{Binding PseudoOwnerCanal}"/>
+                                <GridViewColumn Width="100" Header="Message" DisplayMemberBinding="{Binding Message}"/>
+                                <GridViewColumn Width="50" Header="Statut" DisplayMemberBinding="{Binding Statut}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
                 </StackPanel>
             </StackPanel>
         </GroupBox>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="100">
-            <ListView x:Name="ListeViewContact" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="300">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Width="50" Header="Id" DisplayMemberBinding="{Binding Id}"/>
-                        <GridViewColumn Width="100" Header="Titre" DisplayMemberBinding="{Binding Titre}"/>
-                        <GridViewColumn Width="100" Header="Pseudo" DisplayMemberBinding="{Binding Pseudo}"/>
-                        <GridViewColumn Width="100" Header="Créateur du canal" DisplayMemberBinding="{Binding PseudoOwnerCanal}"/>
-                        <GridViewColumn Width="100" Header="Message" DisplayMemberBinding="{Binding Message}"/>
-                        <GridViewColumn Width="50" Header="Statut" DisplayMemberBinding="{Binding Statut}"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-
-        </StackPanel>
+        
     </Grid>
 </Window>
