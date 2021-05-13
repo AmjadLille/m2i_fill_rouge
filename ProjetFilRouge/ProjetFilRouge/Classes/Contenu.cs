@@ -11,11 +11,15 @@ namespace ProjetFilRouge.Classes
         int id;
         string titre;
         int idUser;
+        string pseudo;
         int idCanal;
+        string pseudoOwnerCanal;
         int idCommentaires;
+        string message;
         string link;
         string img;
         int isStatut;
+        string statut;
 
         #region Constructeurs
         public Contenu()
@@ -31,6 +35,22 @@ namespace ProjetFilRouge.Classes
             this.img = img;
             this.isStatut = isStatut;
         }
+        public Contenu(int id, string titre, string pseudo, string pseudoOwnerCanal, string message, string link, string img, int isStatut)
+        {
+            this.id = id;
+            this.titre = titre;
+            this.pseudo = pseudo;
+            this.pseudoOwnerCanal = pseudoOwnerCanal;
+            this.message = message;
+            this.link = link;
+            this.img = img;
+            this.isStatut = isStatut;
+            if (isStatut == 2)
+            { this.statut = "Actif";}
+            if (isStatut == 3)
+            {this.statut = "Inactif";}
+        }
+
         #endregion
         #region Getter/setter
         public int Id { get => id; set => id = value; }
@@ -41,6 +61,10 @@ namespace ProjetFilRouge.Classes
         public string Img { get => img; set => img = value; }
         public int IsStatut { get => isStatut; set => isStatut = value; }
         public int IdCommentaires { get => idCommentaires; set => idCommentaires = value; }
+        public string Pseudo { get => pseudo; set => pseudo = value; }
+        public string PseudoOwnerCanal { get => pseudoOwnerCanal; set => pseudoOwnerCanal = value; }
+        public string Message { get => message; set => message = value; }
+        public string Statut { get => statut; set => statut = value; }
         #endregion
 
         public static List<Contenu> ContenuRecherche(int id, string t, int idU, int idCo, int idCa, string link, string img, int statut)
@@ -48,7 +72,16 @@ namespace ProjetFilRouge.Classes
             List<Contenu> liste = new List<Contenu>();
 
             SqlConnection connection = BDDconnexion.Connection;
-            string request = "Select * from contenu";
+            string request = "select Contenu.id," +
+                             "Contenu.titre," +
+                             "Users.pseudo as ContenuOwner," +
+                             "Commentaire.msg," +
+                             "Users.pseudo as CanalOwner," +
+                             "Contenu.link," +
+                             "Contenu.img," +
+                             "Contenu.isStatut from contenu "+
+                             "left join Users on Users.id = Contenu.idUser " +
+                             "left join Commentaire on Commentaire.id = Contenu.idComment";
 
             if (id != -1 || t != "" || idU != -1 || idCo != -1 || idCa != -1 || link != "" || img != "" || statut != 0)
             {
@@ -106,7 +139,7 @@ namespace ProjetFilRouge.Classes
 
             SqlCommand command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@id", id));
-            command.Parameters.Add(new SqlParameter("@n", t));
+            command.Parameters.Add(new SqlParameter("@t", t));
             command.Parameters.Add(new SqlParameter("@idU", idU));
             command.Parameters.Add(new SqlParameter("@idCo", idCo));
             command.Parameters.Add(new SqlParameter("@idCa", idCa));
@@ -118,12 +151,23 @@ namespace ProjetFilRouge.Classes
 
             while (reader.Read())
             {
+                //string pseudo = "";
+                //string pseudoOwnerCanal = ""; 
+                //string message = ""; 
+
+                //if (reader.GetString(2) != null)
+                //{pseudo = reader.GetString(2);}
+                //if (reader.GetString(3) != null)
+                //{ pseudoOwnerCanal = reader.GetString(3); }
+                //if (reader.GetString(4) != null)
+                //{ message = reader.GetString(4); }
+
                 Contenu c = new Contenu(
                     reader.GetInt32(0),//id
                     reader.GetString(1),//titre                   
-                    reader.GetInt32(2),//idUser                   
-                    reader.GetInt32(3),//idComment                   
-                    reader.GetInt32(4),//idCanal             
+                    reader.GetString(2),//Pseudo                   
+                    reader.GetString(3),//pseudo ownercanal                   
+                    reader.GetString(4),//message             
                     reader.GetString(5),//link                   
                     reader.GetString(6),//img                   
                     reader.GetInt32(7)//isStatut                   

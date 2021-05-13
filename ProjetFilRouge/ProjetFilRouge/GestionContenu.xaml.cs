@@ -1,6 +1,7 @@
 ﻿using ProjetFilRouge.Classes;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,20 +19,26 @@ namespace ProjetFilRouge
     /// </summary>
     public partial class GestionContenu : Window
     {
+        private static List<Contenu> contenus;
         public GestionContenu()
         {
             InitializeComponent();
             AfficherListeContenu();
+            //AddToList();
         }
 
         private void ParcourirContenu_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+            List<Contenu> liste = Contenu.ContenuRecherche(-1,TitreContenu.Text, -1, -1, -1, "", "", 0);
+            contenus = liste;
+            ListeViewContact.ItemsSource = contenus;
         }
+
         private void AfficherListeContenu()
         {
-           List<Contenu> liste = Contenu.ContenuRecherche(-1, "", -1, -1, -1, "", "", 0);
+            List<Contenu> liste = Contenu.ContenuRecherche(-1,"",-1,-1,-1,"","",0);
+            contenus = liste;
+            ListeViewContact.ItemsSource = contenus;
         }
     }
 }

@@ -32,11 +32,11 @@
             <ListView x:Name="ListeViewContact" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="300">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="100" Header="IdContenu" DisplayMemberBinding="{Binding Id}"/>
-                        <GridViewColumn Width="200" Header="Titre" DisplayMemberBinding="{Binding TitreContenu}"/>
-                        <GridViewColumn Width="200" Header="Pseudonyme" DisplayMemberBinding="{Binding IdUser}"/>
-                        <GridViewColumn Width="100" Header="Statut" DisplayMemberBinding="{Binding IdCommentaires}"/>
-
+                        <GridViewColumn Width="50" Header="IdContenu" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Width="200" Header="Titre" DisplayMemberBinding="{Binding Titre}"/>
+                        <GridViewColumn Width="200" Header="Pseudonyme" DisplayMemberBinding="{Binding Pseudo}"/>
+                        <GridViewColumn Width="100" Header="Statut" DisplayMemberBinding="{Binding PseudoOwnerCanal}"/>
+                        <GridViewColumn Width="100" Header="Message" DisplayMemberBinding="{Binding Message}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

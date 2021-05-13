@@ -2,7 +2,7 @@
 --select * from canal;
 --select * from Commentaire;
 --select * from UserInCanal;
---select * From Contenu
+select * From Contenu
 
 ---- Récupére le theme du canal avec le pseudo du 
 -- créateur
@@ -29,11 +29,24 @@
 --where Users.id = 1 
 
 --requête de connexion 
-select * from users 
-where upper(pseudo) like upper('xylaise')  
-and mdp = 'xylaise' 
+--select * from users 
+--where upper(pseudo) like upper('xylaise')  
+--and mdp = 'xylaise' 
 
 -- requête pour valider du contenu
 
-
+select Contenu.id,
+	   Contenu.titre,
+	   Users.pseudo as ContenuOwner,
+	   Commentaire.msg,
+	   Users.pseudo as CanalOwner,
+	   Contenu.link,
+	   Contenu.img,
+	   Contenu.isStatut
+from Contenu
+left join Users
+on Users.id = Contenu.idUser
+left join Commentaire
+on Commentaire.id = Contenu.idComment
+where Contenu.titre = 'image';
 
