@@ -18,7 +18,6 @@ namespace ProjetFilRouge
     /// </summary>
     public partial class Acceuil : Window
     {
-
         int id;
 
         public int Id { get => id; set => id = value; }
@@ -26,7 +25,7 @@ namespace ProjetFilRouge
         public Acceuil(int id)
         {
             InitializeComponent();
-            int Id = id;
+            this.Id = id;
             AfficherNomAdmin(Id);
         }
 

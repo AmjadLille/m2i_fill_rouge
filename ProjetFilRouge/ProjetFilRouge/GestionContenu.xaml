@@ -40,6 +40,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Button x:Name="ParcourirContenu" Content="Parcourir" Click="ParcourirContenu_Click" Margin="10"/>
                         <Button x:Name="AjouterContenu" Content="Ajouter" Click="AjouterContenu_Click" Margin="10"/>
+                        <Button x:Name="ModifierContenu" Content="Modifier" Click="ModifierContenu_Click" Margin="10"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">
