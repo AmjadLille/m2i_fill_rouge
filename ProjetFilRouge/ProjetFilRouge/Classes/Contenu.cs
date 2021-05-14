@@ -223,16 +223,15 @@ namespace ProjetFilRouge.Classes
             string request = "Update Contenu set " +
                 "titre = @titre, " +
                 "idUser = @idUser, " +
-                "idComment = @idComment, " +
+                //"idComment = @idComment, " +
                 "idCanal = @idCanal," +
-                "link = @link" +
-                "img = @img " +
+                "link = @link," +
+                "img = @img, " +
                 "isStatut = @isStatut " +
                 "where id = @id";
-
             SqlCommand command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@titre", c.Titre));
-            command.Parameters.Add(new SqlParameter(" @idUser", c.IdUser));
+            command.Parameters.Add(new SqlParameter("@idUser", c.IdUser));
             command.Parameters.Add(new SqlParameter("@idComment", c.IdCommentaires));
             command.Parameters.Add(new SqlParameter("@idCanal", c.IdCana));
             command.Parameters.Add(new SqlParameter("@link", c.Link));

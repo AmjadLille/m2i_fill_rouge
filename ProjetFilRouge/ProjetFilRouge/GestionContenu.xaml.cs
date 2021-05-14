@@ -29,7 +29,6 @@ namespace ProjetFilRouge
             Id = id;
             InitializeComponent();
             AfficherListeContenu();
-            //AddToList();
         }
 
         private void ParcourirContenu_Click(object sender, RoutedEventArgs e)
@@ -85,7 +84,12 @@ namespace ProjetFilRouge
                             break;
                         default:
                             break;
-                    }                                 
+                    }
+                    TitreContenu.Clear();
+                    ImageContenu.Clear();
+                    LienContenu.Clear();
+                    StatutActif.IsChecked = false; 
+                    StatutInactif.IsChecked = false; 
                 }
                 else
                 { MessageBox.Show("Vous n'avez fournit aucun fichier","Aucun fichier fournit",MessageBoxButton.OK,MessageBoxImage.Error); }
@@ -105,13 +109,78 @@ namespace ProjetFilRouge
                 TitreContenu.Text = c.Titre;
                 LienContenu.Text = c.Link;
                 ImageContenu.Text = c.Img;
+                IdContenu.Text = Convert.ToString(c.Id);
+                OwnerCanal.Text = c.PseudoOwnerCanal;
+                OwnerContenu.Text = c.Pseudo;
+                IdCommentaire.Text = Convert.ToString(c.IdCommentaires);
                 if (c.IsStatut == 2)
                 {StatutActif.IsChecked = true;}
                 if (c.IsStatut == 3)
-                { StatutActif.IsChecked = false; }
+                { StatutInactif.IsChecked = true; }
+
+                ParcourirContenu.Visibility = Visibility.Collapsed;
+                AjouterContenu.Visibility = Visibility.Collapsed;
+                ModifierContenu.Visibility = Visibility.Collapsed;
+                ConfirmerModificationContenu.Visibility = Visibility.Visible;
+                AnnulerModification.Visibility = Visibility.Visible;
             }
             else
                 MessageBox.Show("Veuillez séléctionner une entrée de la liste", "Erreur de séléction...", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
+        private void ConfirmerModificationContenu_Click(object sender, RoutedEventArgs e)
+        {
+            List<User> ownerCanal = User.UserRecherche(-1, "", "", OwnerCanal.Text, "");
+            List<User> ownerContenu = User.UserRecherche(-1, "", "", OwnerContenu.Text, "");
+
+            User idOwnerCanal = ownerCanal.Find(user => user.Pseudo == OwnerCanal.Text);
+            User idOwnerContenu = ownerContenu.Find(user => user.Pseudo == OwnerContenu.Text);
+
+            Contenu c = new Contenu();
+            c.Id = Convert.ToInt32(IdContenu.Text);
+            c.Titre = TitreContenu.Text;
+            c.IdUser = idOwnerContenu.Id;
+            c.IdCana = idOwnerCanal.Id;
+            c.IdCommentaires = Convert.ToInt32(IdCommentaire.Text);
+            c.Link = LienContenu.Text;
+            c.Img = ImageContenu.Text;
+            if (StatutActif.IsChecked == true)
+            {c.IsStatut = 2;}
+            if (StatutInactif.IsChecked == true)
+            {c.IsStatut = 3;}
+
+            bool IsModify = Contenu.ModifierContenu(c);
+
+            if (IsModify)
+            {
+                MessageBox.Show(c.Titre+" a été modifié","Contenu modifié",MessageBoxButton.OK,MessageBoxImage.Information);
+                TitreContenu.Clear();
+                LienContenu.Clear();
+                ImageContenu.Clear();
+                IdContenu.Text = "";
+                OwnerCanal.Text = "";
+                OwnerContenu.Text = "";
+                IdCommentaire.Text = "";
+                StatutActif.IsChecked = false;
+                StatutInactif.IsChecked = false;
+
+                ParcourirContenu.Visibility = Visibility.Visible;
+                AjouterContenu.Visibility = Visibility.Visible;
+                ModifierContenu.Visibility = Visibility.Visible;
+                ConfirmerModificationContenu.Visibility = Visibility.Collapsed;
+                AfficherListeContenu();
+            }
+            else
+            {
+                MessageBox.Show(c.Titre + " n'a pas été modifié", "Contenu non modifié", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void AnnulerModification_Click(object sender, RoutedEventArgs e)
+        {
+            GestionContenu g = new GestionContenu(Id);
+            g.Show();
+            Close();
         }
     }
 }
