@@ -20,6 +20,8 @@
                 <TextBox x:Name="EmailUtilisateur" Margin="0 5 0 0" Width="500"/>
                 <TextBlock Text="Pseudonyme :" Margin="0 5 0 0"/>
                 <TextBox x:Name="PseudoUtilisateur" Margin="0 5 0 0" Width="500"/>
+                <TextBlock Text="Mot de passe :" Margin="0 5 0 0"/>
+                <TextBox x:Name="MdpUtilisateur" Margin="0 5 0 0" Width="500"/>
                 <TextBlock Text="Statut :" Margin="0 5 0 0"/>
                 <StackPanel Orientation="Horizontal">
                     <RadioButton  x:Name="StatutActif" Content="Actif" Margin="0 5 10 0"/>
@@ -47,8 +49,10 @@
                         <GridViewColumn Width="150" Header="Prenom" DisplayMemberBinding="{Binding NomUtilisateur}"/>
                         <GridViewColumn Width="250" Header="Email" DisplayMemberBinding="{Binding EmailUtilisateur}"/>
                         <GridViewColumn Width="150" Header="Pseudonyme" DisplayMemberBinding="{Binding PseudonymeUtilisateur}"/>
+                        <GridViewColumn Width="75" Header="Mdp" DisplayMemberBinding="{Binding MdpUtilisateur}"/>
                         <GridViewColumn Width="75" Header="Admin" DisplayMemberBinding="{Binding AdminUtilisateur}"/>
                         <GridViewColumn Width="75" Header="Statut" DisplayMemberBinding="{Binding StatutUtilisateur}"/>
+                        
 
                     </GridView>
                 </ListView.View>
