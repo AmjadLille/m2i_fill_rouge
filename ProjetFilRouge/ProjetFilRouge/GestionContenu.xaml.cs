@@ -130,8 +130,8 @@ namespace ProjetFilRouge
 
         private void ConfirmerModificationContenu_Click(object sender, RoutedEventArgs e)
         {
-            List<User> ownerCanal = User.UserRecherche(-1, "", "", OwnerCanal.Text, "");
-            List<User> ownerContenu = User.UserRecherche(-1, "", "", OwnerContenu.Text, "");
+            List<User> ownerCanal = User.UserRecherche(-1, "", "", OwnerCanal.Text, "",-1,-1);
+            List<User> ownerContenu = User.UserRecherche(-1, "", "", OwnerContenu.Text, "",-1,-1);
 
             User idOwnerCanal = ownerCanal.Find(user => user.Pseudo == OwnerCanal.Text);
             User idOwnerContenu = ownerContenu.Find(user => user.Pseudo == OwnerContenu.Text);

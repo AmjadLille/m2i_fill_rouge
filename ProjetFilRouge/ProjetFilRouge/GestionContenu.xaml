@@ -7,8 +7,7 @@
         mc:Ignorable="d"
         Title="GestionContenu" Height="600" Width="800">
     <Grid>
-        <GroupBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="700" Margin="10">
-            <StackPanel>
+        <StackPanel>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Height="229">
                     <GroupBox Header="Titre">
                         <StackPanel Orientation="Horizontal">
@@ -66,7 +65,7 @@
 
                 </StackPanel>
             </StackPanel>
-        </GroupBox>
+
         
     </Grid>
 </Window>

@@ -28,7 +28,7 @@ namespace ProjetFilRouge
             string mdp = MdpUtilisateur.Text;
             string pseudo = Pseudo.Text;
 
-            List<User> us = User.UserRecherche(-1,"","",pseudo,"");
+            List<User> us = User.UserRecherche(-1,"","",pseudo,"",-1,0);
 
             if (us.Count == 0)
             {
@@ -39,14 +39,19 @@ namespace ProjetFilRouge
                 //Expression lambda recherche un user dans la liste us dont le pseudo est notre pseudo
                 User admin = us.Find(user => user.Pseudo == pseudo);
 
-                if (admin.IsAdmin)
+                if (admin.Mdp == mdp )
                 {
-                    Acceuil g = new Acceuil(admin.Id);
-                    g.Show();
-                    Close();
+                    if (admin.IsAdmin)
+                    {
+                        Acceuil g = new Acceuil(admin.Id);
+                        g.Show();
+                        Close();
+                    }
+                    else
+                    { MessageBox.Show("Vous n'êtes pas administrateur", "Compte admin requis", MessageBoxButton.OK, MessageBoxImage.Error); }
                 }
                 else
-                { MessageBox.Show("Vous n'êtes pas administrateur", "Compte admin requis", MessageBoxButton.OK, MessageBoxImage.Error); }
+                { MessageBox.Show("Les identifiants ne correspondent pas","Erreur identifiants", MessageBoxButton.OK,MessageBoxImage.Error); }
             }
            
         }

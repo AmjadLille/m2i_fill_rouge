@@ -45,14 +45,14 @@ namespace ProjetFilRouge.Classes
 
         #endregion
 
-        public static List<User> UserRecherche(int id, string n, string p, string ps, string email)
+        public static List<User> UserRecherche(int id, string n, string p, string ps, string email, int admin, int statut)
         {
             List<User> liste = new List<User>();
 
             SqlConnection connection = BDDconnexion.Connection;
             string request = "Select * from users";
 
-            if (id != -1 || n != "" || p != "" || ps != "" || email != "")
+            if (id != -1 || n != "" || p != "" || ps != "" || email != "" || admin != -1 || statut != 0)
             {
                 int i = 0;
                 request += " where ";
@@ -86,6 +86,18 @@ namespace ProjetFilRouge.Classes
                     { request += " and "; }
                     request += "email = @email "; 
                 }
+                if (admin != -1)
+                {
+                    if (i != 0)
+                    { request += " and "; }
+                    request += "isAdmin = @isAdmin ";
+                }
+                if (statut != 0)
+                {
+                    if (i != 0)
+                    { request += " and "; }
+                    request += "isStatut = @isStatut ";
+                }
             }
 
             SqlCommand command = new SqlCommand(request,connection);
@@ -94,6 +106,12 @@ namespace ProjetFilRouge.Classes
             command.Parameters.Add(new SqlParameter("@p", p));
             command.Parameters.Add(new SqlParameter("@ps", ps));
             command.Parameters.Add(new SqlParameter("@email", email));
+            command.Parameters.Add(new SqlParameter("@isStatut", statut));
+            if (admin == 1)
+            { command.Parameters.Add(new SqlParameter("@isAdmin", true)); }
+            else if (admin == 0)
+            { command.Parameters.Add(new SqlParameter("@isAdmin", false)); }
+
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
 
@@ -147,7 +165,7 @@ namespace ProjetFilRouge.Classes
                 "pseudo = @pseudo, " +
                 "mdp = @mdp, " +
                 "email = @email," +
-                "isStatut = @isStatut" +
+                "isStatut = @isStatut," +
                 "isAdmin = @isAdmin " +
                 "where id = @id";
 
@@ -158,6 +176,7 @@ namespace ProjetFilRouge.Classes
             command.Parameters.Add(new SqlParameter("@email", u.Email));
             command.Parameters.Add(new SqlParameter("@isStatut", u.isStatut));
             command.Parameters.Add(new SqlParameter("@isAdmin", u.isAdmin));
+            command.Parameters.Add(new SqlParameter("@id", u.Id));
             connection.Open();
 
             int valid = command.ExecuteNonQuery();

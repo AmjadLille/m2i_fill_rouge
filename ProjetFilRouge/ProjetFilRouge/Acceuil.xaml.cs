@@ -40,13 +40,13 @@ namespace ProjetFilRouge
 
         private void GestionUtilisateur_Click(object sender, RoutedEventArgs e)
         {
-            GestionUtilisateur g = new GestionUtilisateur();
+            GestionUtilisateur g = new GestionUtilisateur(Id);
             g.Show();
         }
 
         private void AfficherNomAdmin(int id)
         {
-            List<User> us = User.UserRecherche(id,"","","","");
+            List<User> us = User.UserRecherche(id,"","","","",-1,0);
             User admin = us.Find(user => user.Id == id);
 
             nomAdmin.Text = admin.Pseudo;
