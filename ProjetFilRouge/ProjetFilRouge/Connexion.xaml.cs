@@ -25,7 +25,7 @@ namespace ProjetFilRouge
 
         public void Login_Click(object sender, RoutedEventArgs e)
         {
-            string mdp = MdpUtilisateur.Text;
+            string mdp = MdpUtilisateur.Password;
             string pseudo = Pseudo.Text;
 
             List<User> us = User.UserRecherche(-1,"","",pseudo,"",-1,0);

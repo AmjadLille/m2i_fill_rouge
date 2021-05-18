@@ -98,7 +98,7 @@ namespace ProjetFilRouge.Classes
                 {
                     if (i != 0)
                     { request += "and "; }
-                    request += "Contenu.titre like @t";
+                    request += "Contenu.titre like @t ";
                     i++;
                 }
                 if (idU != -1)
@@ -127,7 +127,7 @@ namespace ProjetFilRouge.Classes
                     if (i != 0)
                         { request += "and "; }
                     if (link == "*")
-                        {request += "Contenu.link like '%%'"; }
+                        {request += "Contenu.link like '%%' "; }
                     else
                         request += "Contenu.link = @link ";
                     i++;
@@ -166,24 +166,30 @@ namespace ProjetFilRouge.Classes
             while (reader.Read())
             {
                 //string pseudo = "";
-                //string pseudoOwnerCanal = ""; 
-                //string message = ""; 
+                //string pseudoOwnerCanal = "";
+                //string message = "";
 
                 //if (reader.GetString(2) != null)
-                //{pseudo = reader.GetString(2);}
-                //if (reader.GetString(3) != null)
-                //{ pseudoOwnerCanal = reader.GetString(3); }
+                //{ pseudo = reader.GetString(2); }
                 //if (reader.GetString(4) != null)
-                //{ message = reader.GetString(4); }
+                //{ pseudoOwnerCanal = reader.GetString(4); }
+                //if (reader.GetString(3) != null)
+                //{ message = reader.GetString(3); }
+
+                    string pseudo = reader.IsDBNull(2) ? null : reader.GetString(2);
+                    string pseudoOwnerCanal = reader.IsDBNull(4) ? null : reader.GetString(4);
+                    string message = reader.IsDBNull(3) ? null : reader.GetString(3);
+                    string lien = reader.IsDBNull(5) ? null : reader.GetString(5);
+                    string image = reader.IsDBNull(6) ? null : reader.GetString(6);                                
 
                 Contenu c = new Contenu(
                     reader.GetInt32(0),//id
                     reader.GetString(1),//titre                   
-                    reader.GetString(2),//Pseudo                   
-                    reader.GetString(4),//pseudo ownercanal                   
-                    reader.GetString(3),//message             
-                    reader.GetString(5),//link                   
-                    reader.GetString(6),//img                   
+                    pseudo,//Pseudo                   
+                    pseudoOwnerCanal,//pseudo ownercanal                   
+                    message,//message             
+                    lien,//link                   
+                    image,//img                   
                     reader.GetInt32(7)//isStatut                   
                     );
                 liste.Add(c);

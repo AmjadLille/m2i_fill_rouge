@@ -130,8 +130,8 @@ namespace ProjetFilRouge
 
         private void ConfirmerModificationContenu_Click(object sender, RoutedEventArgs e)
         {
-            List<User> ownerCanal = User.UserRecherche(-1, "", "", OwnerCanal.Text, "",-1,-1);
-            List<User> ownerContenu = User.UserRecherche(-1, "", "", OwnerContenu.Text, "",-1,-1);
+            List<User> ownerCanal = User.UserRecherche(-1, "", "", OwnerCanal.Text, "",-1,0);
+            List<User> ownerContenu = User.UserRecherche(-1, "", "", OwnerContenu.Text, "",-1,0);
 
             User idOwnerCanal = ownerCanal.Find(user => user.Pseudo == OwnerCanal.Text);
             User idOwnerContenu = ownerContenu.Find(user => user.Pseudo == OwnerContenu.Text);
@@ -168,6 +168,7 @@ namespace ProjetFilRouge
                 AjouterContenu.Visibility = Visibility.Visible;
                 ModifierContenu.Visibility = Visibility.Visible;
                 ConfirmerModificationContenu.Visibility = Visibility.Collapsed;
+                AnnulerModification.Visibility = Visibility.Collapsed;
                 AfficherListeContenu();
             }
             else

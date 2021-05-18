@@ -2,7 +2,7 @@
 --select * from canal;
 --select * from Commentaire;
 --select * from UserInCanal;
-select * From Contenu
+--select * From Contenu
 
 ---- Récupére le theme du canal avec le pseudo du 
 -- créateur
@@ -35,20 +35,34 @@ select * From Contenu
 
 -- requête pour valider du contenu
 
-select Contenu.id,
-	   Contenu.titre,
-	   Users.pseudo as ContenuOwner,
-	   Commentaire.msg,
-	   Users.pseudo as CanalOwner,
-	   Contenu.link,
-	   Contenu.img,
-	   Contenu.isStatut
-from Contenu
-left join Users
-on Users.id = Contenu.idUser
-left join Commentaire
-on Commentaire.id = Contenu.idComment
-where Contenu.link like '%%';
+--select Contenu.id,
+--	   Contenu.titre,
+--	   Users.pseudo as ContenuOwner,
+--	   Commentaire.msg,
+--	   Users.pseudo as CanalOwner,
+--	   Contenu.link,
+--	   Contenu.img,
+--	   Contenu.isStatut
+--from Contenu
+--left join Users
+--on Users.id = Contenu.idUser
+--left join Commentaire
+--on Commentaire.id = Contenu.idComment
+--where Contenu.link like '%%';
+
+Select id,
+	   nom,
+	   prenom,
+	   pseudo,
+	   mdp,
+	   email,
+	   isStatut,
+	    REPLACE(REPLACE(REPLACE(isStatut, '1', 'En cours de validation'), 
+		'2', 'Actif')
+		, '3', 'Inactif') as isStatutReplace,
+	   isAdmin,
+	   REPLACE(Replace(isAdmin, 1,'Oui'),0,'Non') as isAdminReplace
+from Users
 
 
 

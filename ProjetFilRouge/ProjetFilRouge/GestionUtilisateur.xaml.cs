@@ -145,9 +145,23 @@ namespace ProjetFilRouge
                 { isStatut = 3; }
 
                 utilisateurs = User.UserRecherche(-1,NomUtilisateur.Text,PrenomUtilisateur.Text,PseudoUtilisateur.Text,EmailUtilisateur.Text,isAdmin,isStatut);
+                ListeViewContact.ItemsSource = utilisateurs;
             }
             else
-            { utilisateurs = User.UserRecherche(-1, "", "", "", "", -1, 0); }
+            { 
+                utilisateurs = User.UserRecherche(-1, "", "", "", "", -1, 0);
+                ListeViewContact.ItemsSource = utilisateurs;
+            }
+            NomUtilisateur.Text = "";
+            PrenomUtilisateur.Text = "";
+            EmailUtilisateur.Text = "";
+            PseudoUtilisateur.Text = "";
+            StatutActif.IsChecked = false;
+            StatutEnCours.IsChecked = false;
+            StatutInactif.IsChecked = false;
+            AdminNon.IsChecked = false;
+            AdminOui.IsChecked = false;
+
         }
 
         private void AfficherListeContenu()
