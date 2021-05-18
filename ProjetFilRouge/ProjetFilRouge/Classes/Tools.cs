@@ -18,19 +18,20 @@ namespace ProjetFilRouge.Classes
 
         public static bool IsPseudo(string pseudo)
         {
-            string pattern = @"^([a-zA-Z\s]+|[1-9]+)$";
+            string pattern = @"([A-Z])|([a-z])|([0-9])\w+";
             return Regex.IsMatch(pseudo, pattern);
         }
         public static bool IsMdp(string mdp)
         {
-            string pattern = @"^([a-zA-Z\s]+|[1-9]+)$";
+            string pattern = @"([A-Z])|([a-z])|([0-9])\w+";
             return Regex.IsMatch(mdp, pattern);
         }
         // peut preciser mdp OBLIGATOIRE avec deux chiffres avec ça : @"^([a-zA-Z\s]+|[1-9]{2})$"
 
         public static bool IsEmail(string email)
         {
-            string pattern = @"^([\w0-9\._-]+)@([a-z0-9\._-]{2,})\.([a-z]{2,5})$";
+            string pattern = @"^([\w0-9.-]+)@([a-z0-9.-]{2,}).([a-z]{2,5})$";
+                               
             return Regex.IsMatch(email, pattern);
         }
 

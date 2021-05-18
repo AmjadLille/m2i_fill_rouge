@@ -1,4 +1,4 @@
-﻿Select * from users;
+﻿--Select * from users;
 --select * from canal;
 --select * from Commentaire;
 --select * from UserInCanal;
@@ -50,6 +50,7 @@
 --on Commentaire.id = Contenu.idComment
 --where Contenu.link like '%%';
 
+-- Requête pour remplacer les statuts
 Select id,
 	   nom,
 	   prenom,
@@ -64,5 +65,7 @@ Select id,
 	   REPLACE(Replace(isAdmin, 1,'Oui'),0,'Non') as isAdminReplace
 from Users
 
+--Select * from contenu
+--where link = ''
 
 

@@ -31,7 +31,9 @@ namespace ProjetFilRouge
 
         private void AjouterUtilisateur_Click(object sender, RoutedEventArgs e)
         {
-            if (NomUtilisateur.Text != "" && PrenomUtilisateur.Text != "" && 
+            string n = NomUtilisateur.Text;
+
+            if (n != "" && PrenomUtilisateur.Text != "" && 
                 EmailUtilisateur.Text != "" && PseudoUtilisateur.Text != "" && 
                 MdpUtilisateur.Text != "" )
             {
@@ -51,7 +53,7 @@ namespace ProjetFilRouge
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
-                            User u = new User(0, NomUtilisateur.Text, PrenomUtilisateur.Text, PseudoUtilisateur.Text, MdpUtilisateur.Text, EmailUtilisateur.Text, isActif,isAdmin );
+                            User u = new User(0, n, PrenomUtilisateur.Text, PseudoUtilisateur.Text, MdpUtilisateur.Text, EmailUtilisateur.Text, isActif,isAdmin );
                             if (User.AjouterUser(u) != -1)
                             { MessageBox.Show("Utilisateur ajouté", "Ajout fait", MessageBoxButton.OK, MessageBoxImage.Information); }
                             break;
@@ -118,6 +120,7 @@ namespace ProjetFilRouge
 
         private void ParcourirUtilisateur_Click(object sender, RoutedEventArgs e)
         {
+
             if (NomUtilisateur.Text != "" ||
                 PrenomUtilisateur.Text != "" ||
                 EmailUtilisateur.Text != "" ||

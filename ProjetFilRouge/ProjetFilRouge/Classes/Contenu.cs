@@ -26,19 +26,19 @@ namespace ProjetFilRouge.Classes
         {}
         public Contenu(int id, string titre, int idUser, int idCana, int idCo ,string link, string img, int isStatut)
         {
-            this.id = id;
-            this.titre = titre;
-            this.idUser = idUser;
-            this.idCanal = idCana;
-            this.idCommentaires = idCo;
-            this.link = link;
-            this.img = img;
-            this.isStatut = isStatut;
+            Id = id;
+            Titre = titre;
+            IdUser = idUser;
+            IdCana = idCana;
+            IdCommentaires = idCo;
+            Link = link;
+            Img = img;
+            IsStatut = isStatut;
         }
         public Contenu(int id, string titre, string pseudo, string pseudoOwnerCanal, string message, string link, string img, int isStatut)
         {
-            this.id = id;
-            this.titre = titre;
+            Id = id;
+            Titre = titre;
             this.pseudo = pseudo;
             this.pseudoOwnerCanal = pseudoOwnerCanal;
             this.message = message;
@@ -54,7 +54,17 @@ namespace ProjetFilRouge.Classes
         #endregion
         #region Getter/setter
         public int Id { get => id; set => id = value; }
-        public string Titre { get => titre; set => titre = value; }
+        public string Titre 
+        { 
+            get => titre; 
+            set 
+            {
+                if (Tools.IsPseudo(value))
+                    titre = value;
+                else
+                    throw new FormatException("Erreur titre");
+            }
+        }
         public int IdUser { get => idUser; set => idUser = value; }
         public int IdCana { get => idCanal; set => idCanal = value; }
         public string Link { get => link; set => link = value; }
@@ -128,6 +138,8 @@ namespace ProjetFilRouge.Classes
                         { request += "and "; }
                     if (link == "*")
                         {request += "Contenu.link like '%%' "; }
+                    else if (link == " ")
+                        { request += "Contenu.link = ''"; }
                     else
                         request += "Contenu.link = @link ";
                     i++;

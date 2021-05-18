@@ -30,6 +30,7 @@
                     <GroupBox Header="Image" Foreground="White">
                         <StackPanel Orientation="Horizontal">
                             <TextBox x:Name="ImageContenu" Margin="0 5 0 0" Width="200"/>
+                            <Button Name="selectionnerFichier" Click="selectionnerFichier_Click" Content="Fichier" Margin="5 5 0 0"/>
                             <RadioButton GroupName="contientImage" x:Name="Img" Content="Image" Margin="10 5 0 0" Foreground="White"/>
                             <RadioButton GroupName="contientImage" x:Name="NoImg" Content="Pas d'image" Margin="0 5 0 0" Foreground="White"/>
                         </StackPanel>

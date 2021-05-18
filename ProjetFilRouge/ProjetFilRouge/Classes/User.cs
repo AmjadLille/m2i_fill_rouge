@@ -24,14 +24,14 @@ namespace ProjetFilRouge.Classes
         {}
         public User(int id, string nom, string prenom, string pseudo, string mdp, string email, int isStatut, bool isAdmin)
         {
-            this.id = id;
-            this.nom = nom;
-            this.prenom = prenom;
-            this.pseudo = pseudo;
-            this.mdp = mdp;
-            this.email = email;
-            this.isStatut = isStatut;
-            this.isAdmin = isAdmin;
+            Id = id;
+            Nom = nom;
+            Prenom = prenom;
+            Pseudo = pseudo;
+            Mdp = mdp;
+            Email = email;
+            IsStatut = isStatut;
+            IsAdmin = isAdmin;
         }
         #endregion
 
@@ -67,7 +67,7 @@ namespace ProjetFilRouge.Classes
                 if (Tools.IsPseudo(value))
                     pseudo = value;
                 else
-                    throw new FormatException("Erreur nom");
+                    throw new FormatException("Erreur pseudo");
             }
         }
         public string Mdp
@@ -78,7 +78,7 @@ namespace ProjetFilRouge.Classes
                 if (Tools.IsMdp(value))
                     mdp = value;
                 else
-                    throw new FormatException("Erreur nom");
+                    throw new FormatException("Erreur mdp");
             }
         }
         public string Email
@@ -89,7 +89,7 @@ namespace ProjetFilRouge.Classes
                 if (Tools.IsEmail(value))
                     email = value;
                 else
-                    throw new FormatException("Erreur nom");
+                    throw new FormatException("Erreur email");
             }
         }
         public int IsStatut { get => isStatut; set => isStatut = value; }

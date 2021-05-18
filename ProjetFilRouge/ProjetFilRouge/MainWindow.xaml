@@ -5,33 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjetFilRouge"
         mc:Ignorable="d"
-        Title="ProjetFilRouge" Height="500" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
+        Title="ProjetFilRouge" Height="500" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" 
+        Foreground="#FFFDFDFD"
+        Background="#FF34788F"
+        >
     <Grid>
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
-            <Button x:Name="Infos" Content="Infos" Click="Infos_Click" />
-            <Button x:Name="Connexion" Content="Connexion" Click="Connexion_Click" />
+            <Button x:Name="Infos" Content="Infos" Click="Infos_Click" Margin="5" Background="#FF113F59" Foreground="#FFFDFDFD"/>
+            <Button x:Name="Connexion" Content="Connexion" Click="Connexion_Click" Margin="5" Background="#FF113F59" Foreground="#FFFDFDFD"/>
      
         </StackPanel>
-        
+
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <GroupBox>
-                <StackPanel Orientation="Vertical">
-                    <Label Content="Votre Prenom"></Label>
-                    <TextBox x:Name="Prenom" Width="150" VerticalAlignment="Center" />
-                    <Label Content="Votre Nom"></Label>
-                    <TextBox x:Name="Nom" Width="150" VerticalAlignment="Center" />
-                    <Label Content="Votre nom d'utilisateur"></Label>
-                    <TextBox x:Name="NomUtilisateur" Width="150" VerticalAlignment="Center" />
-                    <Label Content="votre adresse E-mail"></Label>
-                    <TextBox x:Name="Mail" Width="150" VerticalAlignment="Center" />
-                    <Label Content="Veuillez confirmer votre E-mail"></Label>
-                    <TextBox x:Name="ConfirmationMail" Width="150" VerticalAlignment="Center" />
-                    <Label Content="Veuillez saisir votre mot de passe"></Label>
-                    <TextBox x:Name="MdpUtilisateur" Width="150" VerticalAlignment="Center" />
-                    <Label Content="Le mot de passe doit contenir au minimum 6 caractère et un chiffre" />
-                    <Button x:Name="ValiderProfil" Content="Valider" Click="Valider_Click" />
-                </StackPanel>
-            </GroupBox>
+            <StackPanel Orientation="Vertical">
+                <Label Content="Votre Prenom" Foreground="#FFFDFDFD"/>
+                <TextBox x:Name="Prenom" Width="150" VerticalAlignment="Center" />
+                <Label Content="Votre Nom" Foreground="#FFFDFDFD"/>
+                <TextBox x:Name="Nom" Width="150" VerticalAlignment="Center" />
+                <Label Content="Votre nom d'utilisateur" Foreground="#FFFDFDFD" />
+                <TextBox x:Name="NomUtilisateur" Width="150" VerticalAlignment="Center" />
+                <Label Content="votre adresse E-mail" Foreground="#FFFDFDFD"/>
+                <TextBox x:Name="Mail" Width="150" VerticalAlignment="Center" />
+                <Label Content="Veuillez confirmer votre E-mail" Foreground="#FFFDFDFD"/>
+                <TextBox x:Name="ConfirmationMail" Width="150" VerticalAlignment="Center" />
+                <Label Content="Veuillez saisir votre mot de passe" Foreground="#FFFDFDFD"/>
+                <TextBox x:Name="MdpUtilisateur" Width="150" VerticalAlignment="Center" />
+                <Label Content="Le mot de passe doit contenir au minimum 6 caractère et un chiffre" Foreground="#FFFDFDFD" />
+                <Button x:Name="ValiderProfil" Content="Valider" Click="Valider_Click" Background="#FF113F59" Foreground="#FFFDFDFD" />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
