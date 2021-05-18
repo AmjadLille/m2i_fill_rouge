@@ -5,52 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjetFilRouge"
         mc:Ignorable="d"
-        Title="GestionContenu" Height="600" Width="800" WindowStartupLocation="CenterOwner">
+        Title="GestionContenu" Height="600" Width="800" WindowStartupLocation="CenterOwner" Background="#FF34788F" 
+        >
     <Grid>
         <StackPanel>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Height="229">
-                    <GroupBox Header="Titre">
+                    <GroupBox Header="Titre" Foreground="White">
                         <StackPanel Orientation="Horizontal">
-                            <TextBox x:Name="TitreContenu" Margin="0 5 0 0" Width="400"/>
+                            <TextBox x:Name="TitreContenu" Margin="0 5 0 0" Width="400" />
                             <TextBlock x:Name="OwnerCanal" Visibility="Collapsed"></TextBlock>
                             <TextBlock x:Name="OwnerContenu" Visibility="Collapsed"></TextBlock>
                             <TextBlock x:Name="IdCommentaire" Visibility="Collapsed"></TextBlock>
-                            <Label Content="Id"/>
-                            <TextBlock x:Name="IdContenu" Margin="0 5 0 0" Width="50"/>
+                            <Label Content="Id" Foreground="White"/>
+                            <TextBlock x:Name="IdContenu" Margin="0 5 0 0" Width="50" Foreground="White"/>
                         </StackPanel>
                     </GroupBox>
-                    <GroupBox Header="Lien">
+                    <GroupBox Header="Lien" Foreground="White">
                         <StackPanel Orientation="Horizontal">
                             <TextBox x:Name="LienContenu" Margin="0 5 0 0" Width="200"/>
-                            <RadioButton GroupName="contientLien" x:Name="Link" Content="Lien" Margin="10 5 0 0"/>
-                            <RadioButton GroupName="contientLien" x:Name="NoLink" Content="Pas de lien" Margin="0 5 0 0"/>
+                            <RadioButton GroupName="contientLien" x:Name="Link" Content="Lien" Margin="10 5 0 0" Foreground="White"/>
+                            <RadioButton GroupName="contientLien" x:Name="NoLink" Content="Pas de lien" Margin="0 5 0 0" Foreground="White"/>
                         </StackPanel>
                     </GroupBox>
-                    <GroupBox Header="Image">
+                    <GroupBox Header="Image" Foreground="White">
                         <StackPanel Orientation="Horizontal">
                             <TextBox x:Name="ImageContenu" Margin="0 5 0 0" Width="200"/>
-                            <RadioButton GroupName="contientImage" x:Name="Img" Content="Image" Margin="10 5 0 0"/>
-                            <RadioButton GroupName="contientImage" x:Name="NoImg" Content="Pas d'image" Margin="0 5 0 0"/>
+                            <RadioButton GroupName="contientImage" x:Name="Img" Content="Image" Margin="10 5 0 0" Foreground="White"/>
+                            <RadioButton GroupName="contientImage" x:Name="NoImg" Content="Pas d'image" Margin="0 5 0 0" Foreground="White"/>
                         </StackPanel>
                     </GroupBox>
-                    <GroupBox Header="Statut">
+                    <GroupBox Header="Statut" Foreground="White">
                         <StackPanel Orientation="Horizontal">
                             <StackPanel Orientation="Horizontal">
-                                <RadioButton GroupName="statut" x:Name="StatutActif" Content="Actif" Margin="10 5 10 0"/>
-                                <RadioButton GroupName="statut" x:Name="StatutInactif" Content="Inactif" Margin="0 5 10 0" />
+                                <RadioButton GroupName="statut" x:Name="StatutActif" Content="Actif" Margin="10 5 10 0" Foreground="White"/>
+                                <RadioButton GroupName="statut" x:Name="StatutInactif" Content="Inactif" Margin="0 5 10 0" Foreground="White"/>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
-                    <StackPanel Orientation="Horizontal">
-                        <Button x:Name="ParcourirContenu" Content="Parcourir" Click="ParcourirContenu_Click" Margin="10"/>
-                        <Button x:Name="AjouterContenu" Content="Ajouter" Click="AjouterContenu_Click" Margin="10"/>
-                        <Button x:Name="ConfirmerModificationContenu" Content="Modifier" Click="ConfirmerModificationContenu_Click" Visibility="Collapsed" Margin="10"/>
-                        <Button x:Name="ModifierContenu" Content="Modifier" Click="ModifierContenu_Click" Margin="10"/>
-                        <Button x:Name="AnnulerModification" Content="Annuler" Click="AnnulerModification_Click" Visibility="Collapsed" Margin="10"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="ParcourirContenu" Content="Parcourir" Click="ParcourirContenu_Click" Margin="10" Background="#FF113F59" Foreground="White" />
+                        <Button x:Name="AjouterContenu" Content="Ajouter" Click="AjouterContenu_Click" Margin="10" Background="#FF113F59" Foreground="White"/>
+                        <Button x:Name="ConfirmerModificationContenu" Content="Modifier" Click="ConfirmerModificationContenu_Click" Visibility="Collapsed" Margin="10" Background="#FF113F59" Foreground="White"/>
+                        <Button x:Name="ModifierContenu" Content="Modifier" Click="ModifierContenu_Click" Margin="10" Background="#FF113F59" Foreground="White"/>
+                        <Button x:Name="AnnulerModification" Content="Annuler" Click="AnnulerModification_Click" Visibility="Collapsed" Margin="10" Background="#FF113F59" Foreground="White"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">
-                    <ListView x:Name="ListeViewContact" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="300">
+                    <ListView x:Name="ListeViewContact" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="300" BorderBrush="#FF34788F">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Width="50" Header="Id" DisplayMemberBinding="{Binding Id}"/>

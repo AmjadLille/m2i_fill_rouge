@@ -5,20 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjetFilRouge"
         mc:Ignorable="d"
-        Title="Connexion" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
+        Title="Connexion" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" Background="#FF34788F" Foreground="White"
+        >
     <Grid>
-        <GroupBox>
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Fil-Rouge" HorizontalAlignment="Center" Margin=" 10 10 10 10"/>
-                
-                <TextBlock Text="Pseudo"/>
-                <TextBox x:Name="Pseudo" Margin="0 5 0 0"/>
-                <TextBlock Text="Votre mot de passe"/>
-                <PasswordBox x:Name="MdpUtilisateur"  Margin="0 5 0 0"/>
-                <Button x:Name="Login" Content="Login" Click="Login_Click" />
-
-
-            </StackPanel>
-        </GroupBox>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Fil-Rouge" HorizontalAlignment="Center" Margin=" 10 10 10 10" FontSize="20"/>
+            <TextBlock Text="Pseudo" TextAlignment="Center"/>
+            <TextBox x:Name="Pseudo" Margin="0 5 0 0"/>
+            <TextBlock Text="Votre mot de passe"/>
+            <PasswordBox x:Name="MdpUtilisateur"  Margin="0 5 0 0"/>
+            <Button x:Name="Login" Content="Login" Click="Login_Click" Background="#FF113F59" Foreground="White" Margin="5"/>
+        </StackPanel>
     </Grid>
 </Window>
