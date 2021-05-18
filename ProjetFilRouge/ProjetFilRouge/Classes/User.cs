@@ -17,6 +17,8 @@ namespace ProjetFilRouge.Classes
         int isStatut;
         bool isAdmin;
 
+        
+        
         #region Constructeurs
         public User()
         {}
@@ -35,11 +37,61 @@ namespace ProjetFilRouge.Classes
 
         #region Getter/Setter
         public int Id { get => id; set => id = value; }
-        public string Nom { get => nom; set => nom = value; }
-        public string Prenom { get => prenom; set => prenom = value; }
-        public string Pseudo { get => pseudo; set => pseudo = value; }
-        public string Mdp { get => mdp; set => mdp = value; }
-        public string Email { get => email; set => email = value; }
+        public string Nom
+        {
+            get => nom;
+            set
+            {
+                if (Tools.IsName(value))
+                    nom = value;
+                else
+                    throw new FormatException("erreur nom");
+            }
+        }
+        public string Prenom
+        {
+            get => prenom;
+            set
+            {
+                if (Tools.IsName(value))
+                    prenom = value;
+                else
+                    throw new FormatException("Erreur prenom");
+            }
+        }
+        public string Pseudo
+        {
+            get => pseudo;
+            set
+            {
+                if (Tools.IsPseudo(value))
+                    pseudo = value;
+                else
+                    throw new FormatException("Erreur nom");
+            }
+        }
+        public string Mdp
+        {
+            get => mdp;
+            set
+            {
+                if (Tools.IsMdp(value))
+                    mdp = value;
+                else
+                    throw new FormatException("Erreur nom");
+            }
+        }
+        public string Email
+        {
+            get => email;
+            set
+            {
+                if (Tools.IsEmail(value))
+                    email = value;
+                else
+                    throw new FormatException("Erreur nom");
+            }
+        }
         public int IsStatut { get => isStatut; set => isStatut = value; }
         public bool IsAdmin { get => isAdmin; set => isAdmin = value; }
 
