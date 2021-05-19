@@ -48,22 +48,25 @@
 --on Users.id = Contenu.idUser
 --left join Commentaire
 --on Commentaire.id = Contenu.idComment
+--where
+--Users.pseudo = 'Xylaise'
+--and Contenu.titre like '%im%' 
 --where Contenu.link like '%%';
 
 -- Requête pour remplacer les statuts
-Select id,
-	   nom,
-	   prenom,
-	   pseudo,
-	   mdp,
-	   email,
-	   isStatut,
-	    REPLACE(REPLACE(REPLACE(isStatut, '1', 'En cours de validation'), 
-		'2', 'Actif')
-		, '3', 'Inactif') as isStatutReplace,
-	   isAdmin,
-	   REPLACE(Replace(isAdmin, 1,'Oui'),0,'Non') as isAdminReplace
-from Users
+--Select id,
+--	   nom,
+--	   prenom,
+--	   pseudo,
+--	   mdp,
+--	   email,
+--	   isStatut,
+--	    REPLACE(REPLACE(REPLACE(isStatut, '1', 'En cours de validation'), 
+--		'2', 'Actif')
+--		, '3', 'Inactif') as isStatutReplace,
+--	   isAdmin,
+--	   REPLACE(Replace(isAdmin, 1,'Oui'),0,'Non') as isAdminReplace
+--from Users
 
 --Select * from contenu
 --where link = ''
